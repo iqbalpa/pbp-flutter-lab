@@ -1,16 +1,11 @@
-# counter_7
+# Tugas 7
 
-A new Flutter project.
+## Stateless widget dan stateful widget
 
-## Getting Started
+## Widget yang dipakai pada proyek ini
 
-This project is a starting point for a Flutter application.
+## Fungsi dari `setState()`
 
-A few resources to get you started if this is your first Flutter project:
+## Perbedaan `const` dan `final`
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Implementasi checklist
