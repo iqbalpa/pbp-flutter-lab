@@ -82,6 +82,7 @@ class _FormBudgetState extends State<FormBudget> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
+                      keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                           labelText: "Nominal",
                           border: OutlineInputBorder(

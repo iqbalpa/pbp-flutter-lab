@@ -40,6 +40,66 @@ class _DataBudgetState extends State<DataBudget> {
           ],
         ),
       ),
+      body: Column(
+        children: <Widget>[
+          Center(
+            child: Container(
+              width: 500,
+              height: 110,
+              padding: const EdgeInsets.all(10),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                color: Colors.grey,
+                elevation: 10,
+                child: Column(
+                  children: <Widget>[
+                    ListTile(title: Text("Beli Sate Pacil")),
+                    Container(
+                      padding: const EdgeInsets.only(left: 15, right: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("15000"),
+                          Text("Pengeluaran"),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Center(
+            child: Container(
+              width: 500,
+              height: 110,
+              padding: const EdgeInsets.all(10),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                color: Colors.grey,
+                elevation: 10,
+                child: Column(
+                  children: <Widget>[
+                    ListTile(title: Text("Jual Aghanim's Septer")),
+                    Container(
+                      padding: const EdgeInsets.only(left: 15, right: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("2100"),
+                          Text("Pemasukan"),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
