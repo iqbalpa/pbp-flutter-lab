@@ -10,6 +10,10 @@ class FormBudget extends StatefulWidget {
 }
 
 class _FormBudgetState extends State<FormBudget> {
+  final _formKey = GlobalKey<FormState>();
+  String _judul = "";
+  String _nominal = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +42,70 @@ class _FormBudgetState extends State<FormBudget> {
               },
             ),
           ],
+        ),
+      ),
+      body: Form(
+        key: _formKey,
+        child: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                        labelText: "Judul",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        )),
+                    onChanged: (String? value) {
+                      setState(() {
+                        _judul = value!;
+                      });
+                    },
+                    onSaved: (String? value) {
+                      setState(() {
+                        _judul = value!;
+                      });
+                    },
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Judul tidak boleh kosong!";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                        labelText: "Nominal",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                        )),
+                    onChanged: (String? value) {
+                      setState(() {
+                        _judul = value!;
+                      });
+                    },
+                    onSaved: (String? value) {
+                      setState(() {
+                        _judul = value!;
+                      });
+                    },
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Nominal tidak boleh kosong!";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
