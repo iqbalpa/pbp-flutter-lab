@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:counter_7/dataBudget.dart';
 import 'package:counter_7/main.dart';
-
-// class for object budget
-class Budget {
-  String judul;
-  String nominal;
-  String jenis;
-
-  Budget(this.judul, this.nominal, this.jenis);
-}
+import 'package:counter_7/budget.dart';
 
 class FormBudget extends StatefulWidget {
   const FormBudget({super.key});
