@@ -3,15 +3,14 @@ import 'package:counter_7/formBudget.dart';
 import 'package:counter_7/main.dart';
 
 class DataBudget extends StatefulWidget {
-  const DataBudget({super.key});
+  var myBudget;
+  DataBudget({super.key, this.myBudget});
 
   @override
   State<DataBudget> createState() => _DataBudgetState();
 }
 
 class _DataBudgetState extends State<DataBudget> {
-  List<Budget> listBudget = const FormBudget().getBudget();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,28 +35,14 @@ class _DataBudgetState extends State<DataBudget> {
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const DataBudget()));
+                        builder: (context) => DataBudget()));
               },
             )
           ],
         ),
       ),
       body: Column(
-        children: [
-          listBudget.isEmpty
-              ? const Text("Data Kosong")
-              : ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: listBudget.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(listBudget[index].judul),
-                      subtitle: Text(listBudget[index].nominal),
-                      trailing: Text(listBudget[index].jenis),
-                    );
-                  },
-                ),
-        ],
+        children: [],
       ),
     );
   }
