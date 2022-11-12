@@ -41,7 +41,11 @@ class _DataBudgetState extends State<DataBudget> {
       ),
       body: Column(
         children: [
-          if (widget.myBudget.length == 0)
+          if (widget.myBudget == null)
+            const Center(
+              child: Text("Data Kosong"),
+            )
+          else if (widget.myBudget.length == 0)
             const Center(
               child: Text("Data Kosong"),
             )
