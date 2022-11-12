@@ -5,6 +5,5 @@ class Budget {
   String nominal;
   String jenis;
 
-  Budget(
-      {this.judul = "kosong", this.nominal = "kosong", this.jenis = "kosong"});
+  Budget(this.judul, this.nominal, this.jenis);
 }

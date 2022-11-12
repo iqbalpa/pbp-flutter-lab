@@ -11,13 +11,12 @@ class FormBudget extends StatefulWidget {
 }
 
 class _FormBudgetState extends State<FormBudget> {
+  List<Budget> _budget = [];
   final _formKey = GlobalKey<FormState>();
   String _judul = "";
   String _nominal = "";
   String _jenis = "Pemasukan";
   List<String> listJenis = ["Pemasukan", "Pengeluaran"];
-
-  Budget newBudget = Budget();
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +42,9 @@ class _FormBudgetState extends State<FormBudget> {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const DataBudget()));
+                          builder: (context) => DataBudget(
+                                myBudget: _budget,
+                              )));
                 },
               ),
             ],
@@ -93,12 +94,12 @@ class _FormBudgetState extends State<FormBudget> {
                           )),
                       onChanged: (String? value) {
                         setState(() {
-                          _judul = value!;
+                          _nominal = value!;
                         });
                       },
                       onSaved: (String? value) {
                         setState(() {
-                          _judul = value!;
+                          _nominal = value!;
                         });
                       },
                       validator: (String? value) {
@@ -143,9 +144,61 @@ class _FormBudgetState extends State<FormBudget> {
             ),
             onPressed: () {
               if (_formKey.currentState!.validate()) {
-                newBudget.judul = _judul;
-                newBudget.nominal = _nominal;
-                newBudget.jenis = _jenis;
+                _formKey.currentState!.save();
+                setState(() {
+                  print("Judul: $_judul");
+                  print("Nominal: $_nominal");
+                  print("Jenis: $_jenis");
+                  Budget newBudget = Budget(_judul, _nominal, _jenis);
+                  _budget.add(newBudget);
+                  print(_budget.length);
+                });
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return Dialog(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      elevation: 15,
+                      child: Container(
+                        child: ListView(
+                          padding: const EdgeInsets.only(top: 20, bottom: 20),
+                          shrinkWrap: true,
+                          children: <Widget>[
+                            Center(
+                                child: Column(
+                              children: [
+                                const Text(
+                                  "Data berhasil disimpan!",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text("Judul: $_judul"),
+                                Text("Nominal: $_nominal"),
+                                Text("Jenis: $_jenis"),
+                              ],
+                            )),
+                            SizedBox(height: 20),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                setState(() {
+                                  _judul = "";
+                                  _nominal = "";
+                                  _jenis = "Pemasukan";
+                                });
+                              },
+                              child: Text('Kembali'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
               }
             },
             child: const Text(

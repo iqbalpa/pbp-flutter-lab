@@ -4,7 +4,8 @@ import 'package:counter_7/main.dart';
 import 'package:counter_7/budget.dart';
 
 class DataBudget extends StatefulWidget {
-  const DataBudget({super.key});
+  var myBudget;
+  DataBudget({super.key, this.myBudget});
 
   @override
   State<DataBudget> createState() => _DataBudgetState();
@@ -32,17 +33,41 @@ class _DataBudgetState extends State<DataBudget> {
             ListTile(
               title: const Text("Data Budget"),
               onTap: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const DataBudget()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => DataBudget()));
               },
             )
           ],
         ),
       ),
       body: Column(
-        children: [],
+        children: [
+          if (widget.myBudget == null)
+            const Center(
+              child: Text("Data Kosong"),
+            )
+          else if (widget.myBudget.length == 0)
+            const Center(
+              child: Text("Data Kosong"),
+            )
+          else
+            Expanded(
+              child: ListView.builder(
+                itemCount: widget.myBudget.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    child: ListTile(
+                      title: Text(widget.myBudget[index]
+                          .judul), // ini judul isinya malah nominal
+                      subtitle: Text(widget
+                          .myBudget[index].nominal), // ini nominal isinya gaada
+                      trailing: Text(widget.myBudget[index].jenis),
+                    ),
+                  );
+                },
+              ),
+            ),
+        ],
       ),
     );
   }
