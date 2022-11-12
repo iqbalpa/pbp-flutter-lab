@@ -18,6 +18,9 @@ class _FormBudgetState extends State<FormBudget> {
   String _jenis = "Pemasukan";
   List<String> listJenis = ["Pemasukan", "Pengeluaran"];
 
+  // create variable for date from date picker
+  DateTime? _date;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,6 +130,24 @@ class _FormBudgetState extends State<FormBudget> {
                       },
                     ),
                   ),
+                  // create date picker inside list tile
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2000),
+                          lastDate: DateTime(2025),
+                        ).then((value) {
+                          setState(() {
+                            _date = value;
+                          });
+                        });
+                      },
+                      child: Text("Pilih Tanggal"),
+                    ),
+                  )
                 ],
               ),
             ),
