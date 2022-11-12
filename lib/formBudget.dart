@@ -94,12 +94,12 @@ class _FormBudgetState extends State<FormBudget> {
                           )),
                       onChanged: (String? value) {
                         setState(() {
-                          _judul = value!;
+                          _nominal = value!;
                         });
                       },
                       onSaved: (String? value) {
                         setState(() {
-                          _judul = value!;
+                          _nominal = value!;
                         });
                       },
                       validator: (String? value) {
@@ -146,6 +146,9 @@ class _FormBudgetState extends State<FormBudget> {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
                 setState(() {
+                  print("Judul: $_judul");
+                  print("Nominal: $_nominal");
+                  print("Jenis: $_jenis");
                   Budget newBudget = Budget(_judul, _nominal, _jenis);
                   _budget.add(newBudget);
                   print(_budget.length);
