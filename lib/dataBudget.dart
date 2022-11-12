@@ -10,6 +10,8 @@ class DataBudget extends StatefulWidget {
 }
 
 class _DataBudgetState extends State<DataBudget> {
+  List<Budget> listBudget = const FormBudget().getBudget();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,63 +43,20 @@ class _DataBudgetState extends State<DataBudget> {
         ),
       ),
       body: Column(
-        children: <Widget>[
-          Center(
-            child: Container(
-              width: 500,
-              height: 110,
-              padding: const EdgeInsets.all(10),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)),
-                color: Colors.grey,
-                elevation: 10,
-                child: Column(
-                  children: <Widget>[
-                    ListTile(title: Text("Beli Sate Pacil")),
-                    Container(
-                      padding: const EdgeInsets.only(left: 15, right: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("15000"),
-                          Text("Pengeluaran"),
-                        ],
-                      ),
-                    )
-                  ],
+        children: [
+          listBudget.isEmpty
+              ? const Text("Data Kosong")
+              : ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: listBudget.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(listBudget[index].judul),
+                      subtitle: Text(listBudget[index].nominal),
+                      trailing: Text(listBudget[index].jenis),
+                    );
+                  },
                 ),
-              ),
-            ),
-          ),
-          Center(
-            child: Container(
-              width: 500,
-              height: 110,
-              padding: const EdgeInsets.all(10),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)),
-                color: Colors.grey,
-                elevation: 10,
-                child: Column(
-                  children: <Widget>[
-                    ListTile(title: Text("Jual Aghanim's Septer")),
-                    Container(
-                      padding: const EdgeInsets.only(left: 15, right: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("2100"),
-                          Text("Pemasukan"),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
         ],
       ),
     );

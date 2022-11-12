@@ -2,19 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:counter_7/dataBudget.dart';
 import 'package:counter_7/main.dart';
 
+// class for object budget
+class Budget {
+  String judul;
+  String nominal;
+  String jenis;
+
+  Budget(this.judul, this.nominal, this.jenis);
+}
+
 class FormBudget extends StatefulWidget {
   const FormBudget({super.key});
 
   @override
   State<FormBudget> createState() => _FormBudgetState();
+
+  List<Budget> getBudget() {
+    return _FormBudgetState().getBudget();
+  }
 }
 
 class _FormBudgetState extends State<FormBudget> {
+  static const List<Budget> _budget = [];
   final _formKey = GlobalKey<FormState>();
   String _judul = "";
   String _nominal = "";
-  String jenis = "Pemasukan";
+  String _jenis = "Pemasukan";
   List<String> listJenis = ["Pemasukan", "Pengeluaran"];
+
+  List<Budget> getBudget() {
+    return _budget;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +127,7 @@ class _FormBudgetState extends State<FormBudget> {
                   ListTile(
                     title: const Text("Pilih Jenis"),
                     trailing: DropdownButton(
-                      value: jenis,
+                      value: _jenis,
                       items: listJenis.map((String iniJenis) {
                         return DropdownMenuItem(
                           value: iniJenis,
@@ -118,7 +136,7 @@ class _FormBudgetState extends State<FormBudget> {
                       }).toList(),
                       onChanged: (String? newJenis) {
                         setState(() {
-                          jenis = newJenis!;
+                          _jenis = newJenis!;
                         });
                       },
                     ),
@@ -139,7 +157,13 @@ class _FormBudgetState extends State<FormBudget> {
               ),
             ),
             onPressed: () {
-              if (_formKey.currentState!.validate()) {}
+              if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.save();
+                setState(() {
+                  Budget newBudget = Budget(_judul, _nominal, _jenis);
+                  _budget.add(newBudget);
+                });
+              }
             },
             child: const Text(
               "Simpan",
