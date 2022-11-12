@@ -32,17 +32,35 @@ class _DataBudgetState extends State<DataBudget> {
             ListTile(
               title: const Text("Data Budget"),
               onTap: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => DataBudget()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => DataBudget()));
               },
             )
           ],
         ),
       ),
       body: Column(
-        children: [],
+        children: [
+          if (widget.myBudget.length == 0)
+            const Center(
+              child: Text("Data Kosong"),
+            )
+          else
+            Expanded(
+              child: ListView.builder(
+                itemCount: widget.myBudget.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    child: ListTile(
+                      title: Text(widget.myBudget[index].judul),
+                      subtitle: Text(widget.myBudget[index].nominal),
+                      trailing: Text(widget.myBudget[index].jenis),
+                    ),
+                  );
+                },
+              ),
+            ),
+        ],
       ),
     );
   }
