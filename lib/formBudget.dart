@@ -170,7 +170,7 @@ class _FormBudgetState extends State<FormBudget> {
                   print("Judul: $_judul");
                   print("Nominal: $_nominal");
                   print("Jenis: $_jenis");
-                  Budget newBudget = Budget(_judul, _nominal, _jenis);
+                  Budget newBudget = Budget(_judul, _nominal, _jenis, _date!);
                   _budget.add(newBudget);
                   print(_budget.length);
                 });

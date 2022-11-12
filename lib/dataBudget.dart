@@ -57,12 +57,16 @@ class _DataBudgetState extends State<DataBudget> {
                 itemBuilder: (context, index) {
                   return Card(
                     child: ListTile(
-                      title: Text(widget.myBudget[index]
-                          .judul), // ini judul isinya malah nominal
-                      subtitle: Text(widget
-                          .myBudget[index].nominal), // ini nominal isinya gaada
-                      trailing: Text(widget.myBudget[index].jenis),
-                    ),
+                        title: Text(widget.myBudget[index]
+                            .judul), // ini judul isinya malah nominal
+                        subtitle: Text(widget.myBudget[index]
+                            .nominal), // ini nominal isinya gaada
+                        trailing: Column(
+                          children: [
+                            Text(widget.myBudget[index].jenis),
+                            Text(widget.myBudget[index].date.toString()),
+                          ],
+                        )),
                   );
                 },
               ),
