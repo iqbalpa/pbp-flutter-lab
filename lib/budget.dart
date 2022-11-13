@@ -4,7 +4,7 @@ class Budget {
   String judul;
   String nominal;
   String jenis;
-  DateTime date;
+  String date;
 
   Budget(this.judul, this.nominal, this.jenis, this.date);
 }

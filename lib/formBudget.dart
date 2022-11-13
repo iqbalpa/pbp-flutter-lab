@@ -167,16 +167,16 @@ class _FormBudgetState extends State<FormBudget> {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
                 setState(() {
-                  print("Judul: $_judul");
-                  print("Nominal: $_nominal");
-                  print("Jenis: $_jenis");
-                  Budget newBudget = Budget(_judul, _nominal, _jenis, _date!);
+                  String tanggal = _date.toString();
+                  tanggal = tanggal.substring(0, 10);
+                  Budget newBudget = Budget(_judul, _nominal, _jenis, tanggal);
                   _budget.add(newBudget);
-                  print(_budget.length);
                 });
                 showDialog(
                   context: context,
                   builder: (context) {
+                    String tanggal = _date.toString();
+                    tanggal = tanggal.substring(0, 10);
                     return Dialog(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -200,6 +200,7 @@ class _FormBudgetState extends State<FormBudget> {
                                 Text("Judul: $_judul"),
                                 Text("Nominal: $_nominal"),
                                 Text("Jenis: $_jenis"),
+                                Text("Tanggal: $tanggal"),
                               ],
                             )),
                             SizedBox(height: 20),
