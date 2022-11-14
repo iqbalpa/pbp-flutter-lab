@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:counter_7/formBudget.dart';
 import 'package:counter_7/dataBudget.dart';
+import 'package:counter_7/main.dart';
 
 class MyDrawer extends StatefulWidget {
   var theBudget;
@@ -16,6 +17,13 @@ class _MyDrawerState extends State<MyDrawer> {
     return Drawer(
       child: Column(
         children: [
+          ListTile(
+            title: const Text("counter_7"),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const MyApp()));
+            },
+          ),
           ListTile(
             title: const Text("Tambah Budget"),
             onTap: () {
