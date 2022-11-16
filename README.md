@@ -66,3 +66,10 @@ Pemanggilan fungsi `setState()` memberitahu framework bahwa state dalam objek in
 Navigator mengatur stack of route dan menyediakan dua cara untuk mengatur stack of route, yaitu declarative dan imperative. Declarative menggunakan `Navigator.pages`, sedangkan imperative `Navigator.push` dan `Navigator.pop`
 
 ## Implementasi checklist
+
+1. Membuat tiga tombol navigasi pada drawer
+   ![image](./assets/empat.png)
+2. Membuat halaman form
+   ![image](./assets/lima.png)
+3. Membuat halaman data budget
+   ![image](./assets/enam.png)
