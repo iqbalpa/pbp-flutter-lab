@@ -73,3 +73,34 @@ Navigator mengatur stack of route dan menyediakan dua cara untuk mengatur stack 
    ![image](./assets/lima.png)
 3. Membuat halaman data budget
    ![image](./assets/enam.png)
+
+---
+
+---
+
+# **Tugas 9**
+
+## Apakah bisa melakukan pengambilan data JSON tanpa membuat model terlebih dahulu?
+
+Tidak bisa, karena JSON yang diambil dari API harus diubah menjadi model terlebih dahulu agar bisa digunakan pada aplikasi.
+
+## Widget yang digunakan pada aplikasi ini
+
+-   FutureBuilder: widget yang digunakan untuk menampilkan data yang diambil dari API
+-   CircularProgressIndicator: widget yang digunakan untuk menampilkan loading (lingkaran berputar)
+-   Card: widget yang digunakan untuk menampilkan data dalam bentuk kartu
+-   ListTile: widget yang digunakan untuk menampilkan data dalam bentuk list
+-   Checkbox: widget yang digunakan untuk menampilkan checkbox
+
+## Mekanisme pengambilan data dari JSON hingga ditampilkan pada flutter
+
+1. Membuat model Watchlist
+2. Mengambil JSON dari API
+3. Menyimpan JSON ke dalam model Watchlist
+4. Menampilkan data dari model Watchlist
+
+## Implementasi checklist
+
+1. Menggunakan widget MyDrawer
+2. Membuat file mywatchlist.dart sebagai halaman mywatchlist untuk menampilkan semua data dari API dalam bentuk ListTile
+3. Membuat file detailWatchlist.dart sebagai halaman detail untuk menampilkan detail watchlist yang dipilih (diklik pada halaman mywatchlist)
