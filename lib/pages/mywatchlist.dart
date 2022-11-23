@@ -37,10 +37,24 @@ class _MyWatchlistState extends State<MyWatchlist> {
                     String review = snapshot.data![index].review;
                     return Card(
                       child: ListTile(
+                        shape: ContinuousRectangleBorder(
+                          side: BorderSide(
+                            color: watched ? Colors.blue : Colors.red, 
+                            width: 1),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
                         title: Text(
                           "${snapshot.data![index].title}",
                         ),
                         subtitle: Text("${snapshot.data![index].release_date}"),
+                        trailing: Checkbox(
+                          value: snapshot.data![index].watched,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              snapshot.data![index].watched = value!;
+                            });
+                          },
+                        ),
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
