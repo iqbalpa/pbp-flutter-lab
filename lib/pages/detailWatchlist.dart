@@ -30,17 +30,53 @@ class _DetailWatchlistState extends State<DetailWatchlist> {
     return Scaffold(
       appBar: AppBar(title: Text("Detail")),
       drawer: MyDrawer(),
-      body: Column(
-          children: [
-            Text(widget.title),
-            Text("Release data: ${widget.release_date}"),
-            Text("Rating: ${widget.rating}"),
-            if (widget.watched)
-              Text("Status: Watched")
-            else
-              Text("Status: Not Yet Watched"),
-            Text("Review: ${widget.review}"),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(children: [
+          Center(
+            child: Text(
+              widget.title,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+          Row(children: [
+            const Text(
+              "Release Date: ",
+              style: TextStyle(fontWeight: FontWeight.w700),
+            ),
+            Text(widget.release_date),
           ]),
+          Row(children: [
+            const Text("Rating: ",
+                style: TextStyle(fontWeight: FontWeight.w700)),
+            Text(widget.rating),
+          ]),
+          Row(children: [
+            const Text("Status: ",
+                style: TextStyle(fontWeight: FontWeight.w700)),
+            if (widget.watched == true)
+              const Text("Watched")
+            else
+              const Text("Not Watched"),
+          ]),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Review: ",
+                      style: TextStyle(fontWeight: FontWeight.w700)),
+                  Text(widget.review),
+                ]),
+          )
+        ]),
+      ),
+
       // create full button to back to mywatchlist.dart
       floatingActionButton: FloatingActionButton(
         onPressed: () {
