@@ -36,6 +36,7 @@ class _DetailWatchlistState extends State<DetailWatchlist> {
             Center(
               child: Text(
                 widget.title,
+                textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
